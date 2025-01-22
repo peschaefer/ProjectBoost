@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cko4hxnjj0uf"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/level.gd" id="1_jv2qe"]
+[ext_resource type="PackedScene" uid="uid://dju1oeffx1o2d" path="res://Scenes/launch_pad.tscn" id="2_ol2t0"]
+[ext_resource type="PackedScene" uid="uid://dmis8pblrhlw8" path="res://Scenes/level_base.tscn" id="3_xii1u"]
+[ext_resource type="PackedScene" uid="uid://385ge2ge8tct" path="res://Scenes/coin.tscn" id="4_e1r85"]
+[ext_resource type="PackedScene" uid="uid://cbfs6nnkit7cr" path="res://Scenes/landing_pad.tscn" id="5_2qn04"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy84e"]
+albedo_color = Color(0.959196, 0.000782221, 0.963764, 1)
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_jv2qe")
+level = "upside-down"
+
+[node name="Obstacle2" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, -0.5)
+use_collision = true
+size = Vector3(1.17168, 12.1969, 4.52393)
+material = SubResource("StandardMaterial3D_oy84e")
+
+[node name="LaunchPad" parent="." instance=ExtResource("2_ol2t0")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -12, 11.5757, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.102, 11.518)
+
+[node name="Floor" parent="." instance=ExtResource("3_xii1u")]
+
+[node name="Coin" parent="." instance=ExtResource("4_e1r85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.558, 0.281)
+
+[node name="LandingPad" parent="." instance=ExtResource("5_2qn04")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 13.2487, 2.74626, 0)
+file_path = "res://Scenes/Levels/Level_1.tscn"

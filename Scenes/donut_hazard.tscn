@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt6ktrkkrqsbs"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qhkdg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n7dnt"]
+
+[node name="Donut" type="AnimatableBody3D" groups=["Hazard"]]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, -1.40625e-08, -1, 0, 0.321713, -4.37114e-08, 0, 0, 0)
+use_collision = true
+mesh = SubResource("CylinderMesh_qhkdg")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D"]
+transform = Transform3D(0.75, 0, 0, 0, 1.13479, 0, 0, 0, 0.75, 0, 0, 0)
+operation = 2
+mesh = SubResource("CylinderMesh_n7dnt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00817871, -0.000854495, 0.0188513)
+operation = 2
+size = Vector3(1.52759, 1.47876, 0.421202)

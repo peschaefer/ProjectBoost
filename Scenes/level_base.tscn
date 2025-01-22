@@ -1,0 +1,143 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmis8pblrhlw8"]
+
+[ext_resource type="Material" uid="uid://kdeii1ulurhe" path="res://Materials/ground.tres" id="1_fr0pg"]
+[ext_resource type="PackedScene" uid="uid://cm5mna3mpkwgy" path="res://Scenes/ui.tscn" id="2_0bc8p"]
+[ext_resource type="Script" path="res://Scenes/Scripts/game.gd" id="2_wc86x"]
+[ext_resource type="AudioStream" uid="uid://bl321bsdeb0yl" path="res://Audio/coin-collection.ogg" id="4_u6kxv"]
+[ext_resource type="PackedScene" uid="uid://bpkbobw4hnfah" path="res://Scenes/player.tscn" id="5_huo6o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sjgfr"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_dhjwa"]
+sky_material = SubResource("ProceduralSkyMaterial_sjgfr")
+
+[sub_resource type="Environment" id="Environment_lw6y3"]
+background_mode = 1
+background_color = Color(0.04, 0.01952, 0.0144, 1)
+sky = SubResource("Sky_dhjwa")
+ambient_light_source = 3
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="LevelBase" type="CSGBox3D" groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154901, -4, -0.018959)
+use_collision = true
+size = Vector3(30, 8, 5)
+material = ExtResource("1_fr0pg")
+script = ExtResource("2_wc86x")
+
+[node name="Wall" type="CSGBox3D" parent="."]
+transform = Transform3D(0.948837, -0.315765, 0, 0.315765, 0.948837, 0, 0, 0, 1, -16.445, 6.43064, 0)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall5" type="CSGBox3D" parent="."]
+transform = Transform3D(0.953575, 0.245821, 0.173973, -0.301155, 0.778364, 0.550868, 0, -0.577687, 0.816258, -11.5545, 4.89494, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall6" type="CSGBox3D" parent="."]
+transform = Transform3D(0.985142, -0.140184, -0.0992119, 0.17174, 0.804131, 0.569104, 8.97512e-09, -0.577687, 0.816258, -4.66166, 4.89494, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall7" type="CSGBox3D" parent="."]
+transform = Transform3D(0.899916, 0.355941, 0.251908, -0.436064, 0.734564, 0.519869, 8.97512e-09, -0.577687, 0.816258, 2.16548, 4.89494, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall9" type="CSGBox3D" parent="."]
+transform = Transform3D(0.899916, 0.355941, 0.251908, -0.203071, 0.853302, -0.480247, -0.385893, 0.381026, 0.840182, -0.238611, 13.3278, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall11" type="CSGBox3D" parent="."]
+transform = Transform3D(0.899916, 0.355941, 0.251908, -0.203071, 0.853302, -0.480247, -0.385893, 0.381026, 0.840182, 8.53952, 13.3278, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall10" type="CSGBox3D" parent="."]
+transform = Transform3D(0.746042, -0.406844, 0.527161, 0.542685, 0.830239, -0.127263, -0.385893, 0.381026, 0.840182, -9.50324, 12.6901, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall12" type="CSGBox3D" parent="."]
+transform = Transform3D(0.1951, -0.856418, 0.477999, 0.901677, 0.348376, 0.256148, -0.385893, 0.381026, 0.840181, -16.8287, 11.6758, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall13" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.408738, 0.879986, 0.241985, 0.901677, 0.348376, 0.256148, 0.141105, 0.32289, -0.935858, 15.3343, 13.3841, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall8" type="CSGBox3D" parent="."]
+transform = Transform3D(0.996523, -0.0680046, -0.0481285, 0.0833126, 0.813421, 0.575678, 8.97512e-09, -0.577687, 0.816258, 9.82153, 4.89494, -4.07146)
+size = Vector3(1.40631, 10, 2.11304)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.859058, 0.511878, 0, -0.511878, 0.859058, 0, 0, 0, 1, -16.7418, 14.0426, 0)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="Ceiling" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.210932, 0.9775, 0, -0.9775, -0.210932, 0, 0, 0, 1, -11.2321, 17.8188, 0)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="Ceiling2" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.210932, 0.9775, 0, -0.9775, -0.210932, 0, 0, 0, 1, -5.78662, 18.8439, 0)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="Ceiling3" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.210932, 0.9775, 0, -0.9775, -0.210932, 0, 0, 0, 1, 3.63015, 18.2632, 0)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="Ceiling4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.398333, 0.917241, 0, -0.917241, 0.398333, 0, 0, 0, 1, 11.9385, 16.8009, 0.732164)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall3" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.742794, 0.66952, 0, -0.66952, -0.742794, 0, 0, 0, 1, 16.0555, 12.9262, 0)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="Wall4" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.902608, -0.430464, 0, 0.430464, -0.902608, 0, 0, 0, 1, 17.5297, 6.66837, 0)
+size = Vector3(4, 10, 4)
+material = ExtResource("1_fr0pg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.984808, -0.111619, 0.133022, 0, 0.766044, 0.642788, -0.173648, -0.633022, 0.754406, 0, 3.69723, 9.12101)
+light_energy = 0.35
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lw6y3")
+
+[node name="Player" parent="." instance=ExtResource("5_huo6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 9, 0)
+
+[node name="UI" parent="." instance=ExtResource("2_0bc8p")]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = -1.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.839, 3.13368)
+omni_range = 12.0
+omni_attenuation = 0.5
+
+[node name="CollectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_u6kxv")
+volume_db = -15.42
+pitch_scale = 1.5
+
+[editable path="UI"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7c5qwfbneksh"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/level.gd" id="1_hwilb"]
+[ext_resource type="PackedScene" uid="uid://dju1oeffx1o2d" path="res://Scenes/launch_pad.tscn" id="2_l7sma"]
+[ext_resource type="PackedScene" uid="uid://dmis8pblrhlw8" path="res://Scenes/level_base.tscn" id="3_ebmj5"]
+[ext_resource type="PackedScene" uid="uid://385ge2ge8tct" path="res://Scenes/coin.tscn" id="4_mu6oe"]
+[ext_resource type="PackedScene" uid="uid://cbfs6nnkit7cr" path="res://Scenes/landing_pad.tscn" id="5_ra7rs"]
+[ext_resource type="Material" uid="uid://csprm2mawynjm" path="res://Materials/gravity.tres" id="5_ukx5f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrgk5"]
+albedo_color = Color(0.959196, 0.000782221, 0.963764, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sj4pq"]
+size = Vector3(2.10266, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ega30"]
+material = ExtResource("5_ukx5f")
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_hwilb")
+level = "flip-first-step"
+
+[node name="Obstacle" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.49061, -0.714783)
+use_collision = true
+size = Vector3(6, 2, 3.57043)
+material = SubResource("StandardMaterial3D_jrgk5")
+
+[node name="Floor2" parent="." instance=ExtResource("3_ebmj5")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.102, 11.518)
+
+[node name="Coin" parent="." instance=ExtResource("4_mu6oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40547, 0)
+
+[node name="Coin2" parent="." instance=ExtResource("4_mu6oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2725, 0)
+
+[node name="LaunchPad" parent="." instance=ExtResource("2_l7sma")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -12, 10.7166, 0)
+
+[node name="LandingPad" parent="." instance=ExtResource("5_ra7rs")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 12, 8.84718, 0)
+file_path = "res://Scenes/Levels/Level_3.tscn"
+
+[node name="GravityHazard" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.26932, 0, 0)
+
+[node name="Range" type="Area3D" parent="GravityHazard"]
+transform = Transform3D(16, 0, 0, 0, -1.09278e-07, -17, 0, 2.5, -7.43094e-07, 0, 5, 0)
+gravity_space_override = 3
+gravity = -9.8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityHazard/Range"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.22125e-13, 1, 0.551331, 0, 0)
+shape = SubResource("BoxShape3D_sj4pq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GravityHazard/Range/CollisionShape3D"]
+transform = Transform3D(2.14951, 0, 0, 0, 1, 0, 0, 4.39648e-14, 1, 0, 0, 0)
+material_override = ExtResource("5_ukx5f")
+mesh = SubResource("BoxMesh_ega30")
+skeleton = NodePath("../..")

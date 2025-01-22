@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://kprtju1ii8wi"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/level.gd" id="1_hwilb"]
+[ext_resource type="PackedScene" uid="uid://dju1oeffx1o2d" path="res://Scenes/launch_pad.tscn" id="2_l7sma"]
+[ext_resource type="PackedScene" uid="uid://dmis8pblrhlw8" path="res://Scenes/level_base.tscn" id="3_ebmj5"]
+[ext_resource type="PackedScene" uid="uid://385ge2ge8tct" path="res://Scenes/coin.tscn" id="4_mu6oe"]
+[ext_resource type="PackedScene" uid="uid://cbfs6nnkit7cr" path="res://Scenes/landing_pad.tscn" id="5_ra7rs"]
+[ext_resource type="Material" uid="uid://csprm2mawynjm" path="res://Materials/gravity.tres" id="5_ukx5f"]
+[ext_resource type="Material" uid="uid://bjpjtf1fnyo5g" path="res://Materials/hazard_pink.tres" id="8_vwt44"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n624f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oapae"]
+material = ExtResource("5_ukx5f")
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_hwilb")
+level = "half-upside-down"
+
+[node name="LaunchPad" parent="." instance=ExtResource("2_l7sma")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -12, 11, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.102, 11.518)
+
+[node name="Floor" parent="." instance=ExtResource("3_ebmj5")]
+
+[node name="LandingPad" parent="." instance=ExtResource("5_ra7rs")]
+file_path = "res://Scenes/Levels/Level_1.tscn"
+
+[node name="GravityHazard" type="Node3D" parent="."]
+transform = Transform3D(1.05365, 0, 0, 0, 1, 0, 0, 0, 1, -8.26932, 0, 0)
+
+[node name="Range" type="Area3D" parent="GravityHazard"]
+transform = Transform3D(16, 0, 0, 0, -1.09278e-07, -17, 0, 2.5, -7.43094e-07, 0, 5, 0)
+gravity_space_override = 3
+gravity = -9.8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityHazard/Range"]
+shape = SubResource("BoxShape3D_n624f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GravityHazard/Range"]
+material_override = ExtResource("5_ukx5f")
+mesh = SubResource("BoxMesh_oapae")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49022, 9.0274, 0)
+material_override = ExtResource("8_vwt44")
+use_collision = true
+size = Vector3(1, 10.8036, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39203, 3.41298, 0)
+material_override = ExtResource("8_vwt44")
+use_collision = true
+size = Vector3(1, 7.37805, 1)
+
+[node name="Coin" parent="." instance=ExtResource("4_mu6oe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15756, 9.14252, 0)

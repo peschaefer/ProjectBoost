@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cm5mna3mpkwgy"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinDisplay" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1018.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 50.0
+text = "0/0 Coins"
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TimeDisplay" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1018.0
+offset_top = 70.0
+offset_right = 1142.0
+offset_bottom = 110.0
+text = "00:00:00"
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="HighscoreDisplay" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 993.52
+offset_top = 40.0
+offset_right = 1117.52
+offset_bottom = 80.0
+text = "🏆 00:00:00"
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false

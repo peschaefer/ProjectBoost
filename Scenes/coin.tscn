@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://385ge2ge8tct"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/coin.gd" id="1_d5np1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ukego"]
+height = 0.26301
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vauyk"]
+albedo_color = Color(0.658099, 0.658099, 5.77569e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c6au3"]
+material = SubResource("StandardMaterial3D_vauyk")
+height = 0.25
+
+[node name="Coin" type="Area3D" groups=["Coin"]]
+script = ExtResource("1_d5np1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 5.78027e-07, 6.99702e-06, 6.99702e-06, 1.59352e-05, -1, -5.78027e-07, 1, 1.59352e-05, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ukego")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_c6au3")
+skeleton = NodePath("")
+
+[connection signal="body_entered" from="." to="." method="_on_Coin_body_entered"]

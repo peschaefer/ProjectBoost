@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dju1oeffx1o2d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii8hb"]
+albedo_color = Color(0.243137, 0.905882, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nkbe5"]
+
+[node name="LaunchPad" type="CSGBox3D" groups=["LaunchPad"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.25, 0)
+use_collision = true
+size = Vector3(3, 0.5, 2)
+material = SubResource("StandardMaterial3D_ii8hb")
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
+[node name="VisibilitySphere" type="MeshInstance3D" parent="SpawnPoint"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_nkbe5")

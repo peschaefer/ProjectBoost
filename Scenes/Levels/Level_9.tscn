@@ -1,0 +1,321 @@
+[gd_scene load_steps=9 format=3 uid="uid://cko4hxnjj0uf"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/level.gd" id="1_vi5a2"]
+[ext_resource type="PackedScene" uid="uid://dju1oeffx1o2d" path="res://Scenes/launch_pad.tscn" id="2_dlmme"]
+[ext_resource type="PackedScene" uid="uid://dmis8pblrhlw8" path="res://Scenes/level_base.tscn" id="3_swrmy"]
+[ext_resource type="PackedScene" uid="uid://385ge2ge8tct" path="res://Scenes/coin.tscn" id="4_u8yom"]
+[ext_resource type="PackedScene" uid="uid://kejbwvdma1ox" path="res://Scenes/looping_hazard.tscn" id="5_3las8"]
+[ext_resource type="PackedScene" uid="uid://cbfs6nnkit7cr" path="res://Scenes/landing_pad.tscn" id="5_a4054"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b5ftl"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h2s55"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_vi5a2")
+level = "bubbles"
+
+[node name="Coin" parent="." instance=ExtResource("4_u8yom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="Coin2" parent="." instance=ExtResource("4_u8yom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, 0)
+
+[node name="Coin3" parent="." instance=ExtResource("4_u8yom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 0)
+
+[node name="LaunchPad" parent="." instance=ExtResource("2_dlmme")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.102, 11.518)
+
+[node name="Floor" parent="." instance=ExtResource("3_swrmy")]
+
+[node name="LandingPad" parent="." instance=ExtResource("5_a4054")]
+file_path = "res://Scenes/Levels/Level_1.tscn"
+
+[node name="1 top" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, -6, 11, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="1 top" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="1 top" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="1 top" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 17, 0)
+
+[node name="Resetpoint" parent="1 top" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1, 0)
+
+[node name="1 center" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, -6, 5, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="1 center" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="1 center" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="1 center" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 17, 0)
+
+[node name="Resetpoint" parent="1 center" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1, 0)
+
+[node name="1 bottom" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, -6, -1, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="1 bottom" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="1 bottom" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="1 bottom" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 17, 0)
+
+[node name="Resetpoint" parent="1 bottom" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1, 0)
+
+[node name="2 top" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, -3, 8, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="2 top" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="2 top" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="2 top" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 14, 0)
+
+[node name="Resetpoint" parent="2 top" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -4, 0)
+
+[node name="2 center" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, -3, 2, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="2 center" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="2 center" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="2 center" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 14, 0)
+
+[node name="Resetpoint" parent="2 center" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -4, 0)
+
+[node name="2 bottom" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, -3, -4, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="2 bottom" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="2 bottom" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="2 bottom" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 14, 0)
+
+[node name="Resetpoint" parent="2 bottom" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -4, 0)
+
+[node name="3 top" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 0, 11, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="3 top" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="3 top" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="3 top" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+
+[node name="Resetpoint" parent="3 top" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="3 center" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 0, 5, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="3 center" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="3 center" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="3 center" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+
+[node name="Resetpoint" parent="3 center" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="3 bottom" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 0, -1, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="3 bottom" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="3 bottom" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="3 bottom" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+
+[node name="Resetpoint" parent="3 bottom" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="4 top" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 3, 8, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="4 top" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="4 top" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="4 top" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 14, 0)
+
+[node name="Resetpoint" parent="4 top" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -4, 0)
+
+[node name="4 center" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 3, 2, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="4 center" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="4 center" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="4 center" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 14, 0)
+
+[node name="Resetpoint" parent="4 center" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -4, 0)
+
+[node name="4 bottom" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 3, -4, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="4 bottom" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="4 bottom" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="4 bottom" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 14, 0)
+
+[node name="Resetpoint" parent="4 bottom" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -4, 0)
+
+[node name="5 top" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 6, 11, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="5 top" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="5 top" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="5 top" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 17, 0)
+
+[node name="Resetpoint" parent="5 top" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 0)
+
+[node name="5 center" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 6, 5, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="5 center" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="5 center" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="5 center" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 17, 0)
+
+[node name="Resetpoint" parent="5 center" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 0)
+
+[node name="5 bottom" parent="." instance=ExtResource("5_3las8")]
+transform = Transform3D(1, 0, 0, 0, 0.00627539, -0.995326, 0, 0.576188, 0.0108403, 6, -1, 0)
+duration = 7.0
+
+[node name="MeshInstance3D" parent="5 bottom" index="0"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+mesh = SubResource("CylinderMesh_b5ftl")
+
+[node name="CollisionShape3D" parent="5 bottom" index="1"]
+transform = Transform3D(1.50552, 0, 0, 0, 0.470729, 0, 0, 0, 1.49937, 0, 0, 0)
+shape = SubResource("CylinderShape3D_h2s55")
+
+[node name="Endpoint" parent="5 bottom" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 17, 0)
+
+[node name="Resetpoint" parent="5 bottom" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 0)
+
+[editable path="1 top"]
+[editable path="1 center"]
+[editable path="1 bottom"]
+[editable path="2 top"]
+[editable path="2 center"]
+[editable path="2 bottom"]
+[editable path="3 top"]
+[editable path="3 center"]
+[editable path="3 bottom"]
+[editable path="4 top"]
+[editable path="4 center"]
+[editable path="4 bottom"]
+[editable path="5 top"]
+[editable path="5 center"]
+[editable path="5 bottom"]
