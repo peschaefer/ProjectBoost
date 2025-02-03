@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpkbobw4hnfah"]
+[gd_scene load_steps=20 format=3 uid="uid://bpkbobw4hnfah"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/player.gd" id="1_ov0pf"]
+[ext_resource type="Script" path="res://player_controller.gd" id="1_dx5c8"]
 [ext_resource type="AudioStream" uid="uid://0sr6e5t28lxe" path="res://Audio/SFX - Death Explosion.ogg" id="2_unccd"]
 [ext_resource type="AudioStream" uid="uid://n10dl0mkrvvy" path="res://Audio/SFX - Success.ogg" id="3_pgsmq"]
 [ext_resource type="AudioStream" uid="uid://cpbrvpq2nh37v" path="res://Audio/SFX - Main engine thrust.ogg" id="4_67b7n"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://Particles/success_particles.tscn" id="7_eap05"]
 [ext_resource type="Material" uid="uid://vhlmiti1hiom" path="res://Materials/red.tres" id="8_hfxg4"]
 [ext_resource type="Material" uid="uid://b3t604rdu7y10" path="res://Materials/dark_grey.tres" id="9_dyvce"]
+[ext_resource type="Script" path="res://state_machine.gd" id="10_fej7o"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a7mpl"]
 lightmap_size_hint = Vector2i(11, 12)
@@ -55,7 +56,7 @@ contact_monitor = true
 max_contacts_reported = 10
 linear_damp = 1.0
 angular_damp = 3.0
-script = ExtResource("1_ov0pf")
+script = ExtResource("1_dx5c8")
 
 [node name="RocketBody" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.00188, 0, 0, 0, 1.00188, 0, 0, 0, 1.00188, 0, 0.0141262, 0)
@@ -179,5 +180,8 @@ polygon = PackedVector2Array(-0.00125448, 1.00142, 0.313389, 0.492715, -0.315898
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
 depth = 0.75
 polygon = PackedVector2Array(-0.50285, -0.591072, -0.298472, -0.274616, 0.301475, -0.281209, 0.501457, -0.595467)
+
+[node name="StateMachine" type="Node3D" parent="."]
+script = ExtResource("10_fej7o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

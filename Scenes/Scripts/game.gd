@@ -4,7 +4,7 @@ extends CSGBox3D
 @onready var coin_display: RichTextLabel = $UI/CoinDisplay
 @onready var time_display: RichTextLabel = $UI/TimeDisplay
 @onready var highscore_display: RichTextLabel = $UI/HighscoreDisplay
-@onready var player: RigidBody3D = $Player
+@onready var player: PlayerController = $Player
 @onready var highscore_handler = preload("res://Scenes//Scripts//high_score_handler.gd").new()
 var landing_pad
 var current_level
@@ -32,9 +32,9 @@ func _ready() -> void:
 	player.connect("liftoff", _on_lift_off)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(timer_running):
-		time_in_milliseconds += delta * 1000
+		time_in_milliseconds += _delta * 1000
 		update_time_display()
 	if Input.is_action_just_pressed("next-level"):
 		LevelHandler.next_level()
@@ -42,6 +42,8 @@ func _process(delta: float) -> void:
 		LevelHandler.previous_level()
 
 func _on_collect_coin(coin_id: int):
+	if(player.state_machine.current_state.get_state_name() == "PlayerReadyState"):
+		return
 	coins_collected+=1
 	update_coin_count()
 	collect_audio.play()
@@ -77,22 +79,14 @@ func reset_player():
 	var launch_pad = get_tree().get_first_node_in_group("LaunchPad")
 	if !launch_pad:
 		return
-	disable_player()
 	var spawn_point = launch_pad.get_node_or_null("SpawnPoint")
 	if spawn_point:
 		player.global_transform.origin = spawn_point.global_transform.origin
 		player.transform.basis = spawn_point.global_transform.basis
-	enable_player()
 	reset_coins()
-
-func disable_player():
-	player.disabled = true
-	
-func enable_player():
-	player.disabled = false
+	player.reset()
 
 func _on_crash():
-	disable_player()
 	stop_timer()
 	var tween: Tween = create_tween()
 	tween.tween_interval(2.5)
@@ -101,7 +95,6 @@ func _on_crash():
 	)
 	
 func _on_level_completed():
-	disable_player()
 	update_highscores()
 	stop_timer()
 	var tween: Tween = create_tween()
